@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
 public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
 
     public Text ui;
