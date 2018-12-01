@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelImporter : MonoBehaviour {
 
     [SerializeField] List<TextAsset> LevelsJSON;
+    [SerializeField] List<GameObject> TilesPrefabs;
+    [SerializeField] Transform game;
 
     List<Level> Levels = new List<Level>();
 
@@ -33,7 +35,10 @@ public class LevelImporter : MonoBehaviour {
             for (int x = 0; x < level.width; ++x) {
                 uint tileValue = levelData[y * level.width + x];
                 Debug.Log(tileValue);
-                Debug.Log(GetInfoOfTile(tileValue).value);
+                TileInfo ti = GetInfoOfTile(tileValue);
+                if (ti.value > 0) {
+                    Instantiate(TilesPrefabs[ti.value - 1], new Vector3(x, -y, 0), Quaternion.identity, game);
+                }
             }
         }
     }
@@ -49,6 +54,7 @@ public class LevelImporter : MonoBehaviour {
         tileValue &= ~(FLIPPED_HORIZONTALLY_FLAG |
                             FLIPPED_VERTICALLY_FLAG |
                             FLIPPED_DIAGONALLY_FLAG);
-        return new TileInfo(tileValue, flippedHorizontally, flippedVertically, flippedDiagonally);
+        int value = (int)tileValue;
+        return new TileInfo(value, flippedHorizontally, flippedVertically, flippedDiagonally);
     }
 }

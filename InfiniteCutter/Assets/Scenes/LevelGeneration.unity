@@ -219,6 +219,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelsJSON:
   - {fileID: 4900000, guid: 33f147e773537354c907a2cd9fdc9e35, type: 3}
+  TilesPrefabs:
+  - {fileID: 1237206309219664, guid: 1edf624b88ba8b04dbba4a0994f7eba0, type: 2}
+  - {fileID: 1491534963971608, guid: f553a7ff55290db45bd4de916e11dd5b, type: 2}
+  - {fileID: 1784068292889076, guid: 2c8e47f7537be7d42add9002250d1eef, type: 2}
+  - {fileID: 1211586746253938, guid: 169742bdc695bb74d9dfbc7e752c2c83, type: 2}
+  - {fileID: 1674646871050142, guid: 5e403e0f55782ef46a52281b4ceaff58, type: 2}
+  - {fileID: 1875471933979192, guid: e4901a27e309971419a9c173b465cb30, type: 2}
+  - {fileID: 1161059887539024, guid: 9cc27aea7e0749341ba0428a300c2802, type: 2}
+  game: {fileID: 2143595851}
 --- !u!4 &1561784152
 Transform:
   m_ObjectHideFlags: 0
@@ -231,4 +240,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2143595850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143595851}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2143595851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2143595850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
