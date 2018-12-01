@@ -22,6 +22,7 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
 
     // Update is called once per frame
     void Update() {
+#if UNITY_EDITOR
         if (click == 0 && Input.GetMouseButtonDown(0)) {
             click++;
             src = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -29,25 +30,58 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
             click = 0;
             src2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-
-            // always keep the leftmost cut on the left.
-            if (src2.x < src.x) {
-                Vector2 temp = src2;
-                src2 = src;
-                src = temp;
-            }
-            Debug.Log(src + " " + src2);
-            Debug.Log(anchor + " " + (src2 - src));
-            src.z = 0;
-            src2.z = 0;
-            GameObject[] objs = MeshCut.Cut(target, src,
-                Quaternion.Euler(0, 0, 90) * (src2 - src)
-                , mat);
-            objs[1].transform.position = new Vector3(3, 0, 0);
-            target = objs[0];
-
-
+            Cut(src, src2);
             //objs[1].transform.position = new Vector3(-3, 0, 0);
+        }
+#endif
+        Swipe();
+    }
+
+    //inside class
+    Vector2 firstPressPos;
+    Vector2 secondPressPos;
+    Vector2 currentSwipe;
+
+    public void Swipe() {
+        if (Input.touches.Length > 0) {
+            Touch t = Input.GetTouch(0);
+            if (t.phase == TouchPhase.Began) {
+                //save began touch 2d point
+                firstPressPos = new Vector2(t.position.x, t.position.y);
+            }
+            if (t.phase == TouchPhase.Ended) {
+                //save ended touch 2d point
+                secondPressPos = new Vector2(t.position.x, t.position.y);
+
+                //create vector from the two points
+                currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+
+                //normalize the 2d vector
+                currentSwipe.Normalize();
+
+                Cut(Camera.main.ScreenToWorldPoint(firstPressPos), Camera.main.ScreenToWorldPoint(secondPressPos));
+
+                //swipe upwards
+                if (currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
+             {
+                    Debug.Log("up swipe");
+                }
+                //swipe down
+                if (currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f)
+             {
+                    Debug.Log("down swipe");
+                }
+                //swipe left
+                if (currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+             {
+                    Debug.Log("left swipe");
+                }
+                //swipe right
+                if (currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+             {
+                    Debug.Log("right swipe");
+                }
+            }
         }
     }
 
@@ -64,6 +98,11 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
 
         src = eventData.pressPosition;
         src2 = eventData.position;
+
+        Cut(src, src2);
+    }
+
+    void Cut(Vector3 src, Vector3 src2) {
         // always keep the leftmost cut on the left.
         if (src2.x < src.x) {
             Vector2 temp = src2;
