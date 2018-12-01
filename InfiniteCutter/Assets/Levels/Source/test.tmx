@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="10" height="6" tilewidth="23" tileheight="23" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" source="TiledTest.tsx"/>
+ <layer name="Tile Layer 1" width="10" height="6">
+  <data encoding="csv">
+0,0,0,13,13,13,0,0,0,0,
+0,0,3221225486,3221225474,3221225476,3221225476,3221225477,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,6,4,4,4,4,7,0,0,0,
+6,15,11,11,11,11,16,7,0,1
+</data>
+ </layer>
+</map>
