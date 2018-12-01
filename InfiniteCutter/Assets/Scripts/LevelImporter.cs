@@ -14,6 +14,33 @@ public class LevelImporter : MonoBehaviour {
     const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
     const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
 
+    struct Extents {
+        public int width;
+        public int height;
+
+        public Extents(int _width, int _height) {
+            width = _width;
+            height = _height;
+        }
+    };
+
+    List<Extents> TilesExtents = new List<Extents>() {
+        new Extents(128,128),
+        new Extents(128,128),
+        new Extents(128,128),
+        new Extents(128,128),
+        new Extents(128,128),
+        new Extents(128,128),
+        new Extents(128,128),
+        new Extents(128,128),
+        new Extents(128,128),
+        new Extents(640,384),
+        new Extents(1664,640),
+        new Extents(1408,1088),
+        new Extents(1792,1088),
+        new Extents(1024,384)
+    }; 
+
     // Use this for initialization
     void Start () {
 
@@ -37,7 +64,10 @@ public class LevelImporter : MonoBehaviour {
                 Debug.Log(tileValue);
                 TileInfo ti = GetInfoOfTile(tileValue);
                 if (ti.value > 0) {
-                    GameObject tile = Instantiate(TilesPrefabs[ti.value - 1], new Vector3(x, -y, 0), Quaternion.identity, game);
+                    int index = ti.value - 1;
+                    float offset = TilesExtents[index].width != 128 ? 0.5f : 0.0f;
+                    GameObject tile = Instantiate(TilesPrefabs[index], new Vector3(x - offset, -y, 0), Quaternion.identity, game);
+                    
 
                     if (ti.flippedDiagonally) {
                         Vector3 localScale = tile.transform.localScale;
@@ -47,15 +77,27 @@ public class LevelImporter : MonoBehaviour {
                     }
 
                     if (ti.flippedHorizontally) {
+                        // Flip
                         Vector3 localScale = tile.transform.localScale;
                         localScale.x *= -1;
                         tile.transform.localScale = localScale;
+
+                        // Transform
+                        Vector3 pos = tile.transform.position;
+                        pos.x += TilesExtents[index].width / 128 - 1;
+                        tile.transform.position = pos;
                     }
 
                     if (ti.flippedVertically) {
+                        // Flip
                         Vector3 localScale = tile.transform.localScale;
                         localScale.y *= -1;
                         tile.transform.localScale = localScale;
+
+                        // Transform
+                        Vector3 pos = tile.transform.position;
+                        pos.y += TilesExtents[index].height / 128 - 1;
+                        tile.transform.position = pos;
                     }
                     
                 }
@@ -76,5 +118,9 @@ public class LevelImporter : MonoBehaviour {
                             FLIPPED_DIAGONALLY_FLAG);
         int value = (int)tileValue;
         return new TileInfo(value, flippedHorizontally, flippedVertically, flippedDiagonally);
+    }
+
+    void FlipRotateObject() {
+
     }
 }
