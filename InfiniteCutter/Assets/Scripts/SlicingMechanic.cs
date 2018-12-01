@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class SlicingMechanic : MonoBehaviour {
+public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
 
     public Text ui;
     public GameObject target;
@@ -26,59 +26,30 @@ public class SlicingMechanic : MonoBehaviour {
         if (click == 0 && Input.GetMouseButtonDown(0)) {
             click++;
             src = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-        else if (click == 1 && Input.GetMouseButtonDown(0)) {
+        } else if (click == 1 && Input.GetMouseButtonDown(0)) {
             click = 0;
             src2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log(src+ " "+src2);
-            Debug.Log(anchor + " "+(src2-src));
+
+
+            // always keep the leftmost cut on the left.
+            if (src2.x < src.x) {
+                Vector2 temp = src2;
+                src2 = src;
+                src = temp;
+            }
+            Debug.Log(src + " " + src2);
+            Debug.Log(anchor + " " + (src2 - src));
             src.z = 0;
             src2.z = 0;
             GameObject[] objs = MeshCut.Cut(target, src,
-                Quaternion.Euler(0, 0, -90) * (src2 - src)
+                Quaternion.Euler(0, 0, 90) * (src2 - src)
                 , mat);
-            objs[0].transform.position = new Vector3(3, 0, 0);
-            target = objs[1];
+            objs[1].transform.position = new Vector3(3, 0, 0);
+            target = objs[0];
+
+
             //objs[1].transform.position = new Vector3(-3, 0, 0);
         }
-    }
-
-    void TestCutting(BoxCollider2D box, Vector2 cutPos) {
-        Vector2 center = box.bounds.center;
-        Vector2[] corners = new Vector2[4] {
-            new Vector2(center.x - box.bounds.extents.x, center.y - box.bounds.extents.y),
-            new Vector2(center.x + box.bounds.extents.x, center.y - box.bounds.extents.y),
-            new Vector2(center.x - box.bounds.extents.x, center.y + box.bounds.extents.y),
-            new Vector2(center.x + box.bounds.extents.x, center.y + box.bounds.extents.y)
-        };
-    }
-
-    Vector2 SnapPoint(Vector2 pt, Vector2[] corners) {
-        Vector2 upperL = corners[2];
-        Vector2 lowerL = corners[0];
-        Vector2 upperR = corners[1];
-        Vector2 lowerR = corners[3];
-        return new Vector2();
-        //return getNearestPointInPerimeter(upperL.x, upperL.y, upperR.x-upperL.x, pt.x, pt.y);
-    }
-
-    Vector2 getNearestPointInPerimeter(float l, float t, float w, float h, float x, float y) {
-        float r = l + w, b = t + h;
-
-        x = Mathf.Clamp(x, l, r);
-        y = Mathf.Clamp(y, t, b);
-
-        float dl = Mathf.Abs(x - l);
-        float dr = Mathf.Abs(x - r);
-        float dt = Mathf.Abs(y - t);
-        float db = Mathf.Abs(y - b);
-
-        float m = Mathf.Min(dl, dr, dt, db);
-
-        if (m == dt) return new Vector2(x, t);
-        if (m == db) return new Vector2(x, b);
-        if (m == dl) return new Vector2(l, y);
-        return new Vector2(r, y);
     }
 
     public void OnEndDrag(PointerEventData eventData) {
@@ -90,6 +61,25 @@ public class SlicingMechanic : MonoBehaviour {
         Debug.Log("norm + " + dragVectorDirection);
         GetDragDirection(dragVectorDirection);
         ui.text = dragVectorDirection.ToString();
+
+
+        src = eventData.pressPosition;
+        src2 = eventData.position;
+        // always keep the leftmost cut on the left.
+        if (src2.x < src.x) {
+            Vector2 temp = src2;
+            src2 = src;
+            src = temp;
+        }
+        Debug.Log(src + " " + src2);
+        Debug.Log(anchor + " " + (src2 - src));
+        src.z = 0;
+        src2.z = 0;
+        GameObject[] objs = MeshCut.Cut(target, src,
+            Quaternion.Euler(0, 0, 90) * (src2 - src)
+            , mat);
+        objs[1].transform.position = new Vector3(3, 0, 0);
+        target = objs[0];
     }
 
     private enum DraggedDirection {
@@ -111,7 +101,6 @@ public class SlicingMechanic : MonoBehaviour {
         Debug.Log(draggedDir);
         return draggedDir;
     }
-
 }
 public class MeshCut {
 
