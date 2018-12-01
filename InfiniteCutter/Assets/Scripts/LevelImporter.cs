@@ -37,7 +37,27 @@ public class LevelImporter : MonoBehaviour {
                 Debug.Log(tileValue);
                 TileInfo ti = GetInfoOfTile(tileValue);
                 if (ti.value > 0) {
-                    Instantiate(TilesPrefabs[ti.value - 1], new Vector3(x, -y, 0), Quaternion.identity, game);
+                    GameObject tile = Instantiate(TilesPrefabs[ti.value - 1], new Vector3(x, -y, 0), Quaternion.identity, game);
+
+                    if (ti.flippedDiagonally) {
+                        Vector3 localScale = tile.transform.localScale;
+                        localScale.x *= -1;
+                        localScale.y *= -1;
+                        tile.transform.localScale = localScale;
+                    }
+
+                    if (ti.flippedHorizontally) {
+                        Vector3 localScale = tile.transform.localScale;
+                        localScale.x *= -1;
+                        tile.transform.localScale = localScale;
+                    }
+
+                    if (ti.flippedVertically) {
+                        Vector3 localScale = tile.transform.localScale;
+                        localScale.y *= -1;
+                        tile.transform.localScale = localScale;
+                    }
+                    
                 }
             }
         }
