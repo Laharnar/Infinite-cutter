@@ -60,4 +60,4 @@ for dirName, subdirList, fileList in os.walk(path_to_export):
 
 
         with open(file_path, 'w') as data_file:
-            data = json.dump(data_output, data_file)
+            data = json.dump(data_output, data_file, sort_keys=True)
