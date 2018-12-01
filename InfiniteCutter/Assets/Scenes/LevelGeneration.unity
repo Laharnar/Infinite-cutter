@@ -515,13 +515,15 @@ MonoBehaviour:
   LevelsJSON:
   - {fileID: 4900000, guid: 33f147e773537354c907a2cd9fdc9e35, type: 3}
   TilesPrefabs:
-  - {fileID: 1237206309219664, guid: 1edf624b88ba8b04dbba4a0994f7eba0, type: 2}
-  - {fileID: 1491534963971608, guid: f553a7ff55290db45bd4de916e11dd5b, type: 2}
-  - {fileID: 1784068292889076, guid: 2c8e47f7537be7d42add9002250d1eef, type: 2}
-  - {fileID: 1211586746253938, guid: 169742bdc695bb74d9dfbc7e752c2c83, type: 2}
-  - {fileID: 1674646871050142, guid: 5e403e0f55782ef46a52281b4ceaff58, type: 2}
-  - {fileID: 1875471933979192, guid: e4901a27e309971419a9c173b465cb30, type: 2}
-  - {fileID: 1161059887539024, guid: 9cc27aea7e0749341ba0428a300c2802, type: 2}
+  - {fileID: 1407217794772464, guid: 0b4497f18e2119f47ae3f91b5e6f6a3b, type: 2}
+  - {fileID: 1868247926943744, guid: 0698f7d4c52fc7e4e8a52b6b37bd7d98, type: 2}
+  - {fileID: 1733567290400890, guid: d79761d2d61bab24aabe0e8c001a7fe4, type: 2}
+  - {fileID: 1674449869640864, guid: a6652266653c93c4b87123f22a9c770e, type: 2}
+  - {fileID: 1364253421565686, guid: 53a2be60e94ee7948b4d4ddc7ebc639f, type: 2}
+  - {fileID: 1240266742575672, guid: c860fa72607858142a807c813ff9e6a1, type: 2}
+  - {fileID: 1331846329941338, guid: 077931a7a44abe344957d03c04c7e312, type: 2}
+  - {fileID: 1228287753155516, guid: 7a9a198436d7187429c3fb2e2d15518a, type: 2}
+  - {fileID: 1516409462843134, guid: fb09f9cd77ebdb743aedf07d15053abc, type: 2}
   game: {fileID: 2143595851}
 --- !u!4 &1561784152
 Transform:
