@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 [System.Serializable]
 public class Layer {
-    public List<int> data;      
+    public List<uint> data;      
 }
 
 [System.Serializable]
