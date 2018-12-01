@@ -6,6 +6,16 @@ path_source_directory = "R:/Documents/Github/Infinite-cutter/InfiniteCutter/Asse
 path_to_export = "R:/Documents/Github/Infinite-cutter/InfiniteCutter/Assets/Levels/Export/"
 
 
+def keep_fields_in_dict(dictionary, fiels_to_keep):
+    data_output = {};
+    for element in dictionary:
+        print(element, dictionary[element])
+        if (element in fiels_to_keep):
+            data_output[element] = dictionary[element]
+
+    return data_output
+
+
 # Exporting part
 for dirName, subdirList, fileList in os.walk(path_source_directory):
     for filename in fileList:
@@ -21,7 +31,8 @@ for dirName, subdirList, fileList in os.walk(path_source_directory):
 
         os.system(command)
 
-FIELDS_TO_KEEP = ['height', 'layers']
+FIELDS_TO_KEEP = ['height', 'layers', 'width']
+FIELDS_TO_KEEP_IN_LAYER = ['data']
 
 # Striping part
 for dirName, subdirList, fileList in os.walk(path_to_export):
@@ -36,13 +47,17 @@ for dirName, subdirList, fileList in os.walk(path_to_export):
         with open(file_path, 'r') as data_file:
             data = json.load(data_file)
             print(data)
-            for element in data:
-                print(element, data[element])
-                if (element  in FIELDS_TO_KEEP):
-                    data_output[element] = data[element]
+            
+            data_output = keep_fields_in_dict(data, FIELDS_TO_KEEP)
                 
-                #if 'nextobjectid' in element:
-                #    del element['nextobjectid']
+        # layers element is special
+        layers = data_output['layers']
+        layers_new = []
+        for layer in layers:
+            new_layer = keep_fields_in_dict(layer, FIELDS_TO_KEEP_IN_LAYER)
+            layers_new.append(new_layer)
+        data_output['layers'] = layers_new
+
 
         with open(file_path, 'w') as data_file:
             data = json.dump(data_output, data_file)
