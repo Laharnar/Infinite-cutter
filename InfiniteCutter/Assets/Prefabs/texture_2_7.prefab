@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4428337895967260}
-  - component: {fileID: 212379958844719530}
-  - component: {fileID: 65364723084657328}
+  - component: {fileID: 64734325256341184}
+  - component: {fileID: 212009085616060836}
   m_Layer: 0
   m_Name: texture_2_7
   m_TagString: Untagged
@@ -41,8 +41,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65364723084657328
-BoxCollider:
+--- !u!64 &64734325256341184
+MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -50,10 +50,12 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!212 &212379958844719530
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 9530d57b88bb97b4fabe83d34bee009e, type: 3}
+--- !u!212 &212009085616060836
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
