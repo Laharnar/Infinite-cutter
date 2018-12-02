@@ -94,8 +94,9 @@ public class LevelImporter : MonoBehaviour {
                 TileInfo ti = GetInfoOfTile(tileValue);
                 if (ti.value > 0) {
                     int index = ti.value - 1;
-                    float offset = TilesExtents[index].width != 128 ? 0.5f : 0.0f;
-                    GameObject tile = Instantiate(TilesPrefabs[index], new Vector3(startingPos.x + x - offset, startingPos.y - y, 0), Quaternion.identity, game);
+                    float offsetX = TilesExtents[index].width != 128 ? 0.5f : 0.0f;
+                    float offsetY = TilesExtents[index].width != 128 ? 1.5f : 0.0f;
+                    GameObject tile = Instantiate(TilesPrefabs[index], new Vector3(startingPos.x + x - offsetX, startingPos.y - y - offsetY, 0), Quaternion.identity, game);
                     
 
                     if (ti.flippedDiagonally) {
