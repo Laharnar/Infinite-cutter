@@ -2,15 +2,15 @@
 using UnityEngine.SceneManagement;
 
 public class GameManager:MonoBehaviour {
-    public string gameplayScene = "CuttingTesting";
-    public string mainmenuScene = "MainMenu";
 
-    public void LoadGameplay() {
-        SceneManager.LoadScene(gameplayScene);
+    [SerializeField] Canvas canvas;
+
+    private void Start() {
+        canvas.enabled = true;
     }
 
-    public void LoadMainMenu() {
-        SceneManager.LoadScene(mainmenuScene);
+    public void StartGame() {
+        canvas.enabled = false;
     }
 }
 
