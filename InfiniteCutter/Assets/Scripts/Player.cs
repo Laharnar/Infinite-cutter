@@ -16,9 +16,9 @@ public class Player:MonoBehaviour {
         //rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, rigidbody.velocity.z);
         //rigidbody.AddForce(Vector3.right * speed, ForceMode.Force);
         Vector3 scale = transform.localScale;
-        scale.x *= 1.0025f;
-        scale.y *= 1.0025f;
-        //transform.localScale = scale;
+        scale.x *= 1.0015f;
+        scale.y *= 1.0015f;
+        transform.localScale = scale;
     }
     
 
