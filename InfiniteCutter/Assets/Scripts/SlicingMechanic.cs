@@ -23,15 +23,13 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
     // Update is called once per frame
     void Update() {
 #if UNITY_EDITOR
-        if (click == 0 && Input.GetMouseButtonDown(0)) {
-            click++;
+        if (Input.GetMouseButtonDown(0)) {
             src = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        } else if (click == 1 && Input.GetMouseButtonDown(0)) {
-            click = 0;
+        }
+        if (Input.GetMouseButtonUp(0)) {
             src2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Cut(src, src2);
-            //objs[1].transform.position = new Vector3(-3, 0, 0);
         }
 #endif
         Swipe();
