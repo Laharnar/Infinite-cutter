@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 352696061}
+  imageRoot: {fileID: 352696058}
   interval: 1.2
 --- !u!114 &352696061
 MonoBehaviour:
@@ -1044,6 +1045,7 @@ GameObject:
   - component: {fileID: 1497509658}
   - component: {fileID: 1497509657}
   - component: {fileID: 1497509656}
+  - component: {fileID: 1497509659}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1155,6 +1157,19 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1497509654}
   m_CullTransparentMesh: 0
+--- !u!114 &1497509659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1497509654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d60b9afd273174baf6ead8b2bbe8cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageRoot: {fileID: 1497509654}
+  interval: 1.2
 --- !u!1 &1641441302
 GameObject:
   m_ObjectHideFlags: 0
