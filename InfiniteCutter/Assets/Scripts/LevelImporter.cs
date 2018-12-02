@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,11 +37,10 @@ public class LevelImporter : MonoBehaviour {
         new Extents(128,128),
         new Extents(128,128),
         new Extents(128,128),
-        new Extents(640,384),
-        new Extents(1664,640),
-        new Extents(1408,1088),
-        new Extents(1792,1088),
-        new Extents(1024,384)
+        new Extents(1536,640),
+        new Extents(1536,640),
+        new Extents(1536,640),
+        new Extents(1536,640)
     }; 
 
     // Use this for initialization
