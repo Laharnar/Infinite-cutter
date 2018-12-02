@@ -34,7 +34,7 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
         }
         
 #endif
-        //Swipe();
+        Swipe();
     }
 
     //inside class
