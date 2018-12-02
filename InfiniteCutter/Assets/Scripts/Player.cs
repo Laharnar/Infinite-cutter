@@ -11,6 +11,7 @@ public class Player:MonoBehaviour {
     private const string kTagObstacle = "Obstacle";
     private List<GameObject> alreadyHit;
     private int Life = 4;
+    private float maxSpeed = 2.0f;
     
 
     // Use this for initialization
@@ -31,6 +32,10 @@ public class Player:MonoBehaviour {
             scale.y *= 1.0015f;
             transform.localScale = scale;
         }
+        Debug.Log(rigidbody.velocity);
+        maxSpeed += 0.00001f;
+        float speedXMax = Mathf.Min(rigidbody.velocity.x, maxSpeed);
+        rigidbody.velocity = new Vector3(speedXMax, rigidbody.velocity.y, rigidbody.velocity.z);
     }
     
 

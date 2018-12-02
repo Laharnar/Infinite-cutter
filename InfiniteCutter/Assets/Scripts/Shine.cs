@@ -16,7 +16,7 @@ public class Shine : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        time += direction * Time.deltaTime;
+        time += direction * 0.045f;
         if (time < 0 || time > interval) {
             direction *= -1;
         }
