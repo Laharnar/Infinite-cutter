@@ -32,7 +32,7 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
             Cut(src, src2);
         }
 #endif
-        Swipe();
+        //Swipe();
     }
 
     //inside class
@@ -107,8 +107,8 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
             src2 = src;
             src = temp;
         }
-        Debug.Log(src + " " + src2);
-        Debug.Log(anchor + " " + (src2 - src));
+        Debug.Log("src:" + src + " " + src2);
+        Debug.Log("anchor: " +anchor + " " + (src2 - src));
         src.z = 0;
         src2.z = 0;
         GameObject[] objs = MeshCut.Cut(target, src,
