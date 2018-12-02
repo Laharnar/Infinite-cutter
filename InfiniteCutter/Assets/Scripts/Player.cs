@@ -64,6 +64,7 @@ public class Player:MonoBehaviour {
         meshCollider.sharedMesh = cube;
         meshFilter.mesh = cube;
         transform.localScale = new Vector3(1, 1, 1);
+        Life = 4;
     }
 }
 
