@@ -114,7 +114,7 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
         GameObject[] objs = MeshCut.Cut(target, src,
             Quaternion.Euler(0, 0, 90) * (src2 - src)
             , mat);
-        objs[1].transform.position = new Vector3(3, 0, 0);
+        //objs[1].transform.position = new Vector3(3, 0, 0);
         target = objs[0];
     }
 
@@ -295,17 +295,17 @@ public class MeshCut {
 
         GameObject leftSideObj = victim;
 
-        GameObject rightSideObj = new GameObject("rightSide", typeof(MeshFilter), typeof(MeshRenderer));
-        rightSideObj.transform.position = victim_transform.position;
-        rightSideObj.transform.rotation = victim_transform.rotation;
-        rightSideObj.GetComponent<MeshFilter>().mesh = right_HalfMesh;
+        //GameObject rightSideObj = new GameObject("rightSide", typeof(MeshFilter), typeof(MeshRenderer));
+        //rightSideObj.transform.position = victim_transform.position;
+        //rightSideObj.transform.rotation = victim_transform.rotation;
+        //rightSideObj.GetComponent<MeshFilter>().mesh = right_HalfMesh;
 
 
         leftSideObj.GetComponent<MeshRenderer>().materials = mats;
-        rightSideObj.GetComponent<MeshRenderer>().materials = mats;
+        //rightSideObj.GetComponent<MeshRenderer>().materials = mats;
 
 
-        return new GameObject[] { leftSideObj, rightSideObj };
+        return new GameObject[] { leftSideObj };//, rightSideObj };
 
     }
 
