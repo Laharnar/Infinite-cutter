@@ -7,24 +7,30 @@ public class Player:MonoBehaviour {
     [SerializeField] Rigidbody rigidbody;
     [SerializeField] AudioClip bump;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] GameManager gameManager;
     private const string kTagObstacle = "Obstacle";
     private List<GameObject> alreadyHit;
+    private int Life = 4;
     
 
     // Use this for initialization
     void Start() {
         alreadyHit = new List<GameObject>();
-    }
+        Life = 4;
+}
 
     // Update is called once per frame
     void Update() {
         //transform.Translate(Vector3.right * Time.deltaTime * speed);
         //rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, rigidbody.velocity.z);
         //rigidbody.AddForce(Vector3.right * speed, ForceMode.Force);
-        Vector3 scale = transform.localScale;
-        scale.x *= 1.0015f;
-        scale.y *= 1.0015f;
-        transform.localScale = scale;
+        if (Time.timeScale > 0) {
+            Vector3 scale = transform.localScale;
+
+            scale.x *= 1.0015f;
+            scale.y *= 1.0015f;
+            transform.localScale = scale;
+        }
     }
     
 
@@ -38,6 +44,10 @@ public class Player:MonoBehaviour {
             alreadyHit.Add(go);
             Debug.Log("Hit");
             audioSource.PlayOneShot(bump);
+            Life--;
+            if (Life <= 0) {
+                gameManager.ShowGameOver();
+            }
         }
     }
 }

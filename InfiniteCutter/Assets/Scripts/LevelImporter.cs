@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelImporter : MonoBehaviour {
-
+    [SerializeField] TextAsset LevelsIntroJSON;
     [SerializeField] List<TextAsset> LevelsJSON;
+    
     [SerializeField] Camera MainCamera;
     [SerializeField] List<GameObject> TilesPrefabs;
     [SerializeField] Transform game;
 
+    Level levelIntro;
     List<Level> Levels = new List<Level>();
+    List<GameObject> activeTiles = new List<GameObject>();
 
-    float CurrentChunkLocation = -10;
+    float CurrentChunkLocation = -20;
 
     const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
     const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
@@ -50,14 +53,29 @@ public class LevelImporter : MonoBehaviour {
             Level level = Level.CreateFromJSON(json.text);
             Levels.Add(level);
         }
-
+        levelIntro = Level.CreateFromJSON(LevelsIntroJSON.text);
         // Spawn just firt level for test
         //SpawnLevel(Levels[0], new Vector2(-10, 2.5f));
 
     }
 
+    public void SpawnFirstChunk() {
+        
+        SpawnLevel(levelIntro, new Vector2(CurrentChunkLocation, 2.5f));
+        CurrentChunkLocation += levelIntro.width;
+    }
+
+    public void Reset() {
+        foreach (GameObject go in activeTiles) {
+            Destroy(go);
+        }
+
+        activeTiles.Clear();
+    }
+
+
     private void Update() {
-        while (CurrentChunkLocation < MainCamera.transform.position.x + 2.5f * MainCamera.orthographicSize) {
+        while (Time.timeScale > 0 &&  CurrentChunkLocation < MainCamera.transform.position.x + 2.5f * MainCamera.orthographicSize) {
             int index = Random.Range(0, Levels.Count);
             SpawnLevel(Levels[index], new Vector2(CurrentChunkLocation, 2.5f));
             CurrentChunkLocation += Levels[0].width;
@@ -111,6 +129,7 @@ public class LevelImporter : MonoBehaviour {
                         tile.transform.position = pos;
                     }
                     
+
                 }
             }
         }

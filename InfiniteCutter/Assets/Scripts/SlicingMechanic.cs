@@ -23,6 +23,7 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
     // Update is called once per frame
     void Update() {
 #if UNITY_EDITOR
+        
         if (Input.GetMouseButtonDown(0)) {
             src = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
@@ -31,6 +32,7 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
 
             Cut(src, src2);
         }
+        
 #endif
         //Swipe();
     }

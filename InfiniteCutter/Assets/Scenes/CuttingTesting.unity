@@ -684,6 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db0cd66abf16514abb325516102b9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelsIntroJSON: {fileID: 4900000, guid: 7b4b1c0450328574485d3fb468863272, type: 3}
   LevelsJSON:
   - {fileID: 4900000, guid: 7a3a548ca45fb9e46aaeaa7f6e5fc511, type: 3}
   - {fileID: 4900000, guid: 9d7b6f814a952aa4ba2edc83cb8e4009, type: 3}
@@ -736,7 +737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1220394275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,6 +919,7 @@ MonoBehaviour:
   rigidbody: {fileID: 1388183040}
   bump: {fileID: 8300000, guid: dcbc41c346051874f815cfdf02fe03aa, type: 3}
   audioSource: {fileID: 1388183041}
+  gameManager: {fileID: 1641441303}
 --- !u!54 &1388183040
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1178,6 +1180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1220394277}
+  levelImporter: {fileID: 1149601015}
+  rootSlicing: {fileID: 1669673596}
 --- !u!4 &1641441304
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,7 +1370,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 100
+  far clip plane: 101
   field of view: 60
   orthographic: 1
   orthographic size: 5
