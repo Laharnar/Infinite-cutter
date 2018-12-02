@@ -291,6 +291,7 @@ public class MeshCut {
 
         victim.name = "leftSide";
         victim.GetComponent<MeshFilter>().mesh = left_HalfMesh;
+        victim.GetComponent<MeshCollider>().sharedMesh = left_HalfMesh;
 
         Material[] mats = new Material[] { victim.GetComponent<MeshRenderer>().material, capMaterial };
 
