@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4264360335600652}
-  - component: {fileID: 64785780156934690}
   - component: {fileID: 212042692032223660}
+  - component: {fileID: 65821362118031222}
   m_Layer: 0
   m_Name: texture_2_5
   m_TagString: Untagged
@@ -41,20 +41,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &64785780156934690
-MeshCollider:
+--- !u!65 &65821362118031222
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1240266742575672}
-  m_Material: {fileID: 13400000, guid: 3ad482733a1d4254e9ec2cb04b5a367e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 853c8187fd0e2b346935bcd5444a7084, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.48970294, z: 0.2}
+  m_Center: {x: 0, y: 0.25514853, z: 0}
 --- !u!212 &212042692032223660
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -90,7 +88,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300010, guid: 34e0cb29f72b28d42859c432e9ca83fd, type: 3}
+  m_Sprite: {fileID: 21300010, guid: b5150e52548e2c24e9b19dc6dda9d36e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

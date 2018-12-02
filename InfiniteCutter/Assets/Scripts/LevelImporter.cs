@@ -58,7 +58,8 @@ public class LevelImporter : MonoBehaviour {
 
     private void Update() {
         while (CurrentChunkLocation < MainCamera.transform.position.x + 2.5f * MainCamera.orthographicSize) {
-            SpawnLevel(Levels[0], new Vector2(CurrentChunkLocation, 2.5f));
+            int index = Random.Range(0, Levels.Count);
+            SpawnLevel(Levels[index], new Vector2(CurrentChunkLocation, 2.5f));
             CurrentChunkLocation += Levels[0].width;
         }
         

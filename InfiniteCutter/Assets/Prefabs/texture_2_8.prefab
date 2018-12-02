@@ -54,7 +54,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 28e38a1c9f887184eaf35836945c7b31, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 8661c21bce0dad842ae34bba59a03f03, type: 3}
 --- !u!212 &212245065287071784
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300016, guid: 34e0cb29f72b28d42859c432e9ca83fd, type: 3}
+  m_Sprite: {fileID: 21300016, guid: b5150e52548e2c24e9b19dc6dda9d36e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
