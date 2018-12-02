@@ -898,7 +898,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1388183034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.25, y: -3.32, z: 0.02}
+  m_LocalPosition: {x: -9.25, y: -4.16, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461096125}
@@ -920,6 +920,9 @@ MonoBehaviour:
   bump: {fileID: 8300000, guid: dcbc41c346051874f815cfdf02fe03aa, type: 3}
   audioSource: {fileID: 1388183041}
   gameManager: {fileID: 1641441303}
+  meshCollider: {fileID: 1388183035}
+  meshFilter: {fileID: 1388183037}
+  cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &1388183040
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1182,6 +1185,7 @@ MonoBehaviour:
   canvas: {fileID: 1220394277}
   levelImporter: {fileID: 1149601015}
   rootSlicing: {fileID: 1669673596}
+  player: {fileID: 1388183039}
 --- !u!4 &1641441304
 Transform:
   m_ObjectHideFlags: 0
@@ -1250,6 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ae69923723226243a1f7639c52450c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1641441303}
   ui: {fileID: 0}
   target: {fileID: 1388183034}
   anchor: {x: -9.81, y: 0, z: 0}

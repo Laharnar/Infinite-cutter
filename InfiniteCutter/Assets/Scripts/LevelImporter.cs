@@ -66,8 +66,9 @@ public class LevelImporter : MonoBehaviour {
     }
 
     public void Reset() {
+        CurrentChunkLocation = -20;
         foreach (GameObject go in activeTiles) {
-            Destroy(go);
+            Destroy(go.gameObject);
         }
 
         activeTiles.Clear();
@@ -90,14 +91,14 @@ public class LevelImporter : MonoBehaviour {
         for (int y = 0; y < level.height; ++y) {
             for (int x = 0; x < level.width; ++x) {
                 uint tileValue = levelData[y * level.width + x];
-                Debug.Log(tileValue);
+                //Debug.Log(tileValue);
                 TileInfo ti = GetInfoOfTile(tileValue);
                 if (ti.value > 0) {
                     int index = ti.value - 1;
                     float offsetX = TilesExtents[index].width != 128 ? 0.5f : 0.0f;
                     float offsetY = TilesExtents[index].width != 128 ? 1.5f : 0.0f;
                     GameObject tile = Instantiate(TilesPrefabs[index], new Vector3(startingPos.x + x - offsetX, startingPos.y - y - offsetY, 0), Quaternion.identity, game);
-                    
+                    activeTiles.Add(tile);
 
                     if (ti.flippedDiagonally) {
                         Vector3 localScale = tile.transform.localScale;

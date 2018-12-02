@@ -8,6 +8,9 @@ public class Player:MonoBehaviour {
     [SerializeField] AudioClip bump;
     [SerializeField] AudioSource audioSource;
     [SerializeField] GameManager gameManager;
+    [SerializeField] MeshCollider meshCollider;
+    [SerializeField] MeshFilter meshFilter;
+    [SerializeField] Mesh cube;
     private const string kTagObstacle = "Obstacle";
     private List<GameObject> alreadyHit;
     private int Life = 4;
@@ -32,7 +35,7 @@ public class Player:MonoBehaviour {
             scale.y *= 1.0015f;
             transform.localScale = scale;
         }
-        Debug.Log(rigidbody.velocity);
+        //Debug.Log(rigidbody.velocity);
         maxSpeed += 0.00001f;
         float speedXMax = Mathf.Min(rigidbody.velocity.x, maxSpeed);
         rigidbody.velocity = new Vector3(speedXMax, rigidbody.velocity.y, rigidbody.velocity.z);
@@ -54,6 +57,13 @@ public class Player:MonoBehaviour {
                 gameManager.ShowGameOver();
             }
         }
+    }
+
+    public void Reset() {
+        transform.position = new Vector3(-9.25f, -4.16f, 0.02f);
+        meshCollider.sharedMesh = cube;
+        meshFilter.mesh = cube;
+        transform.localScale = new Vector3(1, 1, 1);
     }
 }
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
 
+    [SerializeField] GameManager gameManager;
     public Text ui;
     public GameObject target;
     public Vector3 anchor;
@@ -115,7 +116,7 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
         src2.z = 0;
         GameObject[] objs = MeshCut.Cut(target, src,
             Quaternion.Euler(0, 0, 90) * (src2 - src)
-            , mat);
+            , mat, gameManager);
         //objs[1].transform.position = new Vector3(3, 0, 0);
         target = objs[0];
     }
@@ -141,7 +142,7 @@ public class SlicingMechanic : MonoBehaviour, IEndDragHandler {
     }
 }
 public class MeshCut {
-
+    private static GameManager gameManager;
     private static Plane blade;
     private static Transform victim_transform;
     private static Mesh victim_mesh;
@@ -195,7 +196,9 @@ public class MeshCut {
     // capping stuff
     private static List<Vector3> createdVertexPoints = new List<Vector3>();
 
-    public static GameObject[] Cut(GameObject victim, Vector3 anchorPoint, Vector3 normalDirection, Material capMaterial) {
+    public static GameObject[] Cut(GameObject victim, Vector3 anchorPoint, Vector3 normalDirection, Material capMaterial, GameManager _gameManager) {
+
+        gameManager = _gameManager;
 
         victim_transform = victim.transform;
 
@@ -292,6 +295,11 @@ public class MeshCut {
         victim.name = "leftSide";
         victim.GetComponent<MeshFilter>().mesh = left_HalfMesh;
         victim.GetComponent<MeshCollider>().sharedMesh = left_HalfMesh;
+        Bounds bounds = victim.GetComponent<MeshCollider>().sharedMesh.bounds;
+        Debug.Log("bounds:" + bounds);
+        if (bounds.extents.x < 0.05 && bounds.extents.y < 0.05) {
+            gameManager.ShowGameOver();
+        }
 
         Material[] mats = new Material[] { victim.GetComponent<MeshRenderer>().material, capMaterial };
 

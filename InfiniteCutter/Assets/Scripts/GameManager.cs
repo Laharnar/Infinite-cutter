@@ -6,6 +6,7 @@ public class GameManager:MonoBehaviour {
     [SerializeField] Canvas canvas;
     [SerializeField] LevelImporter levelImporter;
     [SerializeField] GameObject rootSlicing;
+    [SerializeField] Player player;
 
     private void Start() {
         canvas.enabled = true;
@@ -19,6 +20,7 @@ public class GameManager:MonoBehaviour {
         levelImporter.Reset();
         levelImporter.SpawnFirstChunk();
         rootSlicing.SetActive(true);
+        player.Reset();
 
     }
 
