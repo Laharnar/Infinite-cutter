@@ -170,7 +170,7 @@ Camera:
   far clip plane: 100
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: 50
   m_CullingMask:
     serializedVersion: 2
@@ -193,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 47049733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -465,7 +465,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 452513229}
   m_LocalRotation: {x: -0, y: -0, z: 0.0056722527, w: 0.99998397}
-  m_LocalPosition: {x: 10, y: -5, z: 0}
+  m_LocalPosition: {x: 10, y: -8, z: 0}
   m_LocalScale: {x: 40, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461096125}
@@ -530,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelsJSON:
+  - {fileID: 4900000, guid: 7a3a548ca45fb9e46aaeaa7f6e5fc511, type: 3}
   - {fileID: 4900000, guid: 33f147e773537354c907a2cd9fdc9e35, type: 3}
   MainCamera: {fileID: 47049736}
   TilesPrefabs:
@@ -542,11 +543,10 @@ MonoBehaviour:
   - {fileID: 1331846329941338, guid: 077931a7a44abe344957d03c04c7e312, type: 2}
   - {fileID: 1228287753155516, guid: 7a9a198436d7187429c3fb2e2d15518a, type: 2}
   - {fileID: 1516409462843134, guid: fb09f9cd77ebdb743aedf07d15053abc, type: 2}
-  - {fileID: 1345894770275186, guid: 099595195db638b4ca06179ef449937d, type: 2}
-  - {fileID: 1562972409540828, guid: 43f78d379835fc743b405e6e7fd0df04, type: 2}
-  - {fileID: 1443244775103180, guid: 6645109595048cd449764fdd517ddbd7, type: 2}
-  - {fileID: 1984649462850134, guid: 24e05dfcabe7eb44db176afd18532d21, type: 2}
-  - {fileID: 1062274904474060, guid: 3e271690247002d4197936a265579f21, type: 2}
+  - {fileID: 1665372872651132, guid: 9b7cd574a093f634fb54d441bae03da8, type: 2}
+  - {fileID: 1869298539919394, guid: 0ae25510105ce914fb36086b5afc6474, type: 2}
+  - {fileID: 1711695713459644, guid: 3e47550cf3ba18e40bdbf399f3319f8f, type: 2}
+  - {fileID: 1160269115840572, guid: d579dbce98c343644bf6e14f839dcc2c, type: 2}
   game: {fileID: 1663974640}
 --- !u!4 &1149601016
 Transform:
@@ -1395,7 +1395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2026508464
 MonoBehaviour:
   m_ObjectHideFlags: 0
