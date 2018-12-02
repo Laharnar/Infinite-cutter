@@ -13,11 +13,12 @@ public class Player:MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //transform.Translate(Vector3.right * Time.deltaTime * speed);
-        rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, rigidbody.velocity.z);
+        //rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, rigidbody.velocity.z);
+        //rigidbody.AddForce(Vector3.right * speed, ForceMode.Force);
         Vector3 scale = transform.localScale;
         scale.x *= 1.0025f;
         scale.y *= 1.0025f;
-        transform.localScale = scale;
+        //transform.localScale = scale;
     }
     
 

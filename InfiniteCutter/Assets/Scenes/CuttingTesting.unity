@@ -669,6 +669,7 @@ GameObject:
   - component: {fileID: 1388183039}
   - component: {fileID: 1388183040}
   - component: {fileID: 1388183035}
+  - component: {fileID: 1388183041}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -682,13 +683,13 @@ MeshCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1388183034}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d7c6157304c9b164997ad36de9057c65, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
-  m_SkinWidth: 0.01
+  m_SkinWidth: 1.00000005e-20
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1388183036
 MeshRenderer:
@@ -739,7 +740,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1388183034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: -2, z: 0}
+  m_LocalPosition: {x: -9.25, y: -3.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461096125}
@@ -756,7 +757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f99d9a57f28ad3438dd13703545b369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5.07
   rigidbody: {fileID: 1388183040}
 --- !u!54 &1388183040
 Rigidbody:
@@ -771,8 +772,24 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Constraints: 120
+  m_CollisionDetection: 2
+--- !u!114 &1388183041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1388183034}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca1c90a1dbe4514784146dfed0f45b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendTriggerMessage: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  skinWidth: 1
 --- !u!1 &1544193296
 GameObject:
   m_ObjectHideFlags: 0

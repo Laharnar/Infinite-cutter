@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4915907998758756}
   - component: {fileID: 212377962906189966}
+  - component: {fileID: 64764903308560072}
   m_Layer: 0
   m_Name: textureButton_0
   m_TagString: Untagged
@@ -40,6 +41,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &64764903308560072
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1665372872651132}
+  m_Material: {fileID: 13400000, guid: 3ad482733a1d4254e9ec2cb04b5a367e, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: cbd3f7763815ccc4ca98b9a50b93ef39, type: 3}
 --- !u!212 &212377962906189966
 SpriteRenderer:
   m_ObjectHideFlags: 1
