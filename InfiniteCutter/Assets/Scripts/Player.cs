@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Player:MonoBehaviour {
 
     [SerializeField] float speed = 1f;
     [SerializeField] Rigidbody rigidbody;
+    [SerializeField] AudioClip bump;
+    [SerializeField] AudioSource audioSource;
+    private const string kTagObstacle = "Obstacle";
+    private List<GameObject> alreadyHit;
+    
 
     // Use this for initialization
     void Start() {
-        //rigidbody.velocity = new Vector3(speed, 0,0);
+        alreadyHit = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -24,6 +30,15 @@ public class Player:MonoBehaviour {
 
     public void Death() {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        GameObject go = collision.gameObject;
+        if (!alreadyHit.Contains(go) && go.tag == kTagObstacle) {
+            alreadyHit.Add(go);
+            Debug.Log("Hit");
+            audioSource.PlayOneShot(bump);
+        }
     }
 }
 
