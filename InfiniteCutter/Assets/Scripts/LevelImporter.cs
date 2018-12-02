@@ -5,10 +5,13 @@ using UnityEngine;
 public class LevelImporter : MonoBehaviour {
 
     [SerializeField] List<TextAsset> LevelsJSON;
+    [SerializeField] Camera MainCamera;
     [SerializeField] List<GameObject> TilesPrefabs;
     [SerializeField] Transform game;
 
     List<Level> Levels = new List<Level>();
+
+    float CurrentChunkLocation = -10;
 
     const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
     const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
@@ -50,8 +53,16 @@ public class LevelImporter : MonoBehaviour {
         }
 
         // Spawn just firt level for test
-        SpawnLevel(Levels[0], new Vector2(0,0));
+        //SpawnLevel(Levels[0], new Vector2(-10, 2.5f));
 
+    }
+
+    private void Update() {
+        while (CurrentChunkLocation < MainCamera.transform.position.x + 2.5f * MainCamera.orthographicSize) {
+            SpawnLevel(Levels[0], new Vector2(CurrentChunkLocation, 2.5f));
+            CurrentChunkLocation += Levels[0].width;
+        }
+        
     }
 
     void SpawnLevel(Level level, Vector2 startingPos) {
@@ -66,7 +77,7 @@ public class LevelImporter : MonoBehaviour {
                 if (ti.value > 0) {
                     int index = ti.value - 1;
                     float offset = TilesExtents[index].width != 128 ? 0.5f : 0.0f;
-                    GameObject tile = Instantiate(TilesPrefabs[index], new Vector3(x - offset, -y, 0), Quaternion.identity, game);
+                    GameObject tile = Instantiate(TilesPrefabs[index], new Vector3(startingPos.x + x - offset, startingPos.y - y, 0), Quaternion.identity, game);
                     
 
                     if (ti.flippedDiagonally) {

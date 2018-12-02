@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour {
         pos.y = transform.position.y;
         pos.z = transform.position.z;
 
-        pos = Vector3.Lerp(pos, transform.position, 0.5f);
+        pos = Vector3.Lerp(pos, transform.position, 0.1f);
         transform.position = pos;
 
     }
